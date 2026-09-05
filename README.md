@@ -80,6 +80,15 @@ Each stage can also be run independently, e.g. `python -m src.quality_analysis`,
 `python -m src.cleaning`, etc. — useful for iterating on one part without
 re-running the whole pipeline.
 
+### Sample output: Part 1 quality plots
+
+`quality_analysis.py` also renders two labeled charts for non-technical
+stakeholders, saved to `reports/plots/`:
+
+| Completeness by column | Account status distribution |
+| :---: | :---: |
+| ![Percentage of missing data by column](reports/plots/completeness_by_column.png) | ![Account status values found in raw data, red bars are invalid](reports/plots/account_status_distribution.png) |
+
 ## 3. Run it via Airflow (Docker Compose)
 
 ```bash
