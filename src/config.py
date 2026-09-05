@@ -92,6 +92,34 @@ CANONICAL_PHONE_REGEX = r"^\d{3}-\d{3}-\d{4}$"  # the normalized target format i
 
 NAME_ALPHA_REGEX = r"^[A-Za-z]+(?:[ '-][A-Za-z]+)*$"
 
+# --- PII categorization (Part 2) ----------------------------------------------
+
+PII_CATEGORIES = {
+    "name": ["first_name", "last_name"],
+    "contact_info": ["email", "phone"],
+    "sensitive_personal": ["date_of_birth", "address"],
+    "financial": ["income"],
+}
+
+# Qualitative risk if this category were exposed in a breach, with rationale.
+PII_CATEGORY_RISK = {
+    "name": "Medium",
+    "contact_info": "High",
+    "sensitive_personal": "High",
+    "financial": "Medium",
+}
+
+# Columns whose combined presence constitutes a "full identity profile" —
+# the worst-case single-record breach impact (identity theft, phishing, etc).
+FULL_PROFILE_COLUMNS = [
+    "first_name",
+    "last_name",
+    "email",
+    "phone",
+    "date_of_birth",
+    "address",
+]
+
 # --- Masking rules (Part 5) ---------------------------------------------------
 
 MASKED_ADDRESS_PLACEHOLDER = "[MASKED ADDRESS]"
