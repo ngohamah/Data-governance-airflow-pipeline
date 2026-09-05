@@ -1,7 +1,22 @@
 # Reflection & Governance
 
-*Based on a 500-row synthetic run (`--seed 2026`); see `reports/` for the full
-underlying reports.*
+> **Note on the numbers below:** this reflection is a hand-written document,
+> not a generated report — unlike the files in `reports/`, it does not get
+> rewritten when the pipeline runs again. Every figure cited here (duplicate
+> counts, invalid-row percentages, PII risk stats, etc.) comes from one
+> specific run:
+>
+> ```bash
+> python -m src.data_generator --rows 500 --seed 2026 --output data/raw/customers_raw.csv
+> python -m src.pipeline
+> ```
+>
+> Generating data with different `--rows`/`--seed`/`--error-rate` values will
+> change the numbers in `reports/*.txt` but will **not** update this file —
+> the qualitative conclusions (which issue types occur, why each fix/masking
+> choice was made, the validation/production-ops reasoning) still hold, but
+> the specific figures should be treated as a snapshot from the run above,
+> not a live summary of whatever is currently in `reports/`.
 
 ## 1. Top 5 Data Quality Issues
 
