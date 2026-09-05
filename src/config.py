@@ -48,6 +48,23 @@ EXPECTED_COLUMNS = [
 
 ACCOUNT_STATUS_VALUES = {"active", "inactive", "suspended"}
 
+# Logical type each column is expected to hold, used for the Part 1 data-type
+# verification section (independent of whatever dtype pandas infers on load).
+EXPECTED_COLUMN_TYPES = {
+    "customer_id": "integer",
+    "first_name": "string",
+    "last_name": "string",
+    "email": "string (email format)",
+    "phone": "string (phone format)",
+    "date_of_birth": "date (YYYY-MM-DD)",
+    "address": "string",
+    "income": "numeric",
+    "account_status": "categorical",
+    "created_date": "date (YYYY-MM-DD)",
+}
+
+DATE_COLUMNS = ("date_of_birth", "created_date")
+
 DATE_FORMAT = "%Y-%m-%d"
 
 NAME_MIN_LEN = 2
@@ -71,6 +88,7 @@ EMAIL_REGEX = r"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"
 PHONE_REGEX = r"^\+?1?[\s.-]?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$"
 PHONE_DIGIT_COUNT = 10
 NORMALIZED_PHONE_TEMPLATE = "{}-{}-{}"  # XXX-XXX-XXXX
+CANONICAL_PHONE_REGEX = r"^\d{3}-\d{3}-\d{4}$"  # the normalized target format itself
 
 NAME_ALPHA_REGEX = r"^[A-Za-z]+(?:[ '-][A-Za-z]+)*$"
 
