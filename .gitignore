@@ -33,3 +33,7 @@ reports/*
 .DS_Store
 .vscode/
 .idea/
+
+# .md files
+implementationmap.md
+PII-Detection&Data.md
