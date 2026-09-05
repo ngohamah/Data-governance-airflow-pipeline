@@ -152,39 +152,34 @@ same `--seed` reproduces an identical file — required for repeatable tests and
 
 ## 5. Airflow DAG shape (`pii_pipeline_dag.py`)
 
-TaskFlow API, one task per brief part, all calling pure functions from `src/pipeline.py`
-(so the same logic is unit-testable outside Airflow):
+**Revised from the original 8-task sketch below (build note, not a re-ask — see rationale).**
+
+TaskFlow API, 2 tasks:
 
 ```
-generate_or_sense_raw_data
-        │
-        ▼
-   profile_quality  ──────────► data_quality_report.txt (+ plots/)
-        │
-        ▼
-   detect_pii  ────────────────► pii_detection_report.txt
-        │
-        ▼
-   validate_raw  ──────────────► validation_results.txt
-        │
-        ▼
-   clean_data  ─────────────────► customers_cleaned.csv + cleaning_log.txt
-        │
-        ▼
-   validate_cleaned (re-run validators, confirm fixes)
-        │
-        ▼
-   mask_pii  ───────────────────► customers_masked.csv + masked_sample.txt
-        │
-        ▼
-   write_pipeline_execution_report ─► pipeline_execution_report.txt
+sense_raw_data ──► run_full_pipeline ──► (pipeline_execution_report.txt + all other
+                                           deliverables, written by src/pipeline.py)
 ```
 
-- Each task wraps its work in try/except, logs start/end/row-counts/dropped-rows, and
-  raises on unrecoverable failure so Airflow marks it failed (no silent swallowing).
-- `data_generator.py` is a standalone CLI the user runs manually (per their instruction —
-  they own generating `customers_raw.csv`); the DAG's first task **senses** the file
-  rather than generating it, so Airflow failure/retry semantics apply if it's missing.
+- `sense_raw_data`: checks `customers_raw.csv` exists, raises a clear `AirflowException`
+  if not (per the user's instruction, `data_generator.py` is run manually — the DAG never
+  generates data itself). Retrying this task is genuinely useful: if the user hasn't run
+  the generator yet, Airflow retries every 5 minutes for 15 minutes, giving them a window
+  to do so before it alerts the admin.
+- `run_full_pipeline`: calls `src.pipeline.run_pipeline()` — the same Part 6 function,
+  unchanged — as a single task.
+- Schedule: `@daily` (a sensible default for a nightly ingestion job; trivially changed).
+
+**Why 2 tasks instead of one-per-brief-part:** `src/pipeline.py` (Part 6, already built)
+already wraps each of its 6 internal stages in its own try/except, times it, and writes
+`pipeline_execution_report.txt` showing exactly which stage failed. Splitting those same
+6 stages into 6 separate Airflow tasks would mean maintaining the same orchestration
+logic — stage sequencing, per-stage error handling, per-stage reporting — in two places
+that could drift out of sync. Since the pipeline is idempotent (it only reads the raw
+CSV and overwrites its own outputs), Airflow retrying `run_full_pipeline` wholesale on
+failure is safe and costs nothing extra. The cost of this choice: Airflow's own UI shows
+retry/duration for the whole run rather than per-part — `pipeline_execution_report.txt`
+is where per-stage detail still lives.
 
 ### Retry + failure-alert policy (user-requested)
 
