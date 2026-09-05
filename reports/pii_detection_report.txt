@@ -1,0 +1,34 @@
+PII DETECTION REPORT
+============================================================
+Total records scanned: 500
+
+This report identifies which columns contain personally identifiable information (PII), how often that information is present, and how exposed the dataset would be in the event of a data breach.
+
+1. PII FOUND, BY CATEGORY
+------------------------------------------------------------
+  Category: name  (breach risk if exposed: Medium)
+      first_name       497 populated values
+      last_name        497 populated values
+      -> 994 total occurrences
+  Category: contact_info  (breach risk if exposed: High)
+      email            496 populated values
+      phone            499 populated values
+      -> 995 total occurrences
+  Category: sensitive_personal  (breach risk if exposed: High)
+      date_of_birth    495 populated values
+      address          497 populated values
+      -> 992 total occurrences
+  Category: financial  (breach risk if exposed: Medium)
+      income           495 populated values
+      -> 495 total occurrences
+
+2. REGEX-CONFIRMED CONTACT INFO
+------------------------------------------------------------
+  Email: 496 populated, 493 match a valid email pattern, 3 do not.
+  Phone: 499 populated, 495 match a valid phone pattern, 4 do not.
+
+3. BREACH RISK ASSESSMENT
+------------------------------------------------------------
+  A 'full identity profile' means a single record where name, email, phone, date of birth, AND address are all present — the combination most useful for identity theft or targeted fraud.
+  Records with a full identity profile: 481 of 500 (96.2%)
+  Impact if breached: every one of these records could be used to impersonate a real customer, open fraudulent accounts in their name, or target them with convincing phishing attacks.

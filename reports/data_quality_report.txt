@@ -1,0 +1,59 @@
+DATA QUALITY REPORT
+============================================================
+Total rows analyzed: 500
+
+1. COMPLETENESS (missing data by column)
+------------------------------------------------------------
+  customer_id           5 missing  (1.0%)
+  first_name            3 missing  (0.6%)
+  last_name             3 missing  (0.6%)
+  email                 4 missing  (0.8%)
+  phone                 1 missing  (0.2%)
+  date_of_birth         5 missing  (1.0%)
+  address               3 missing  (0.6%)
+  income                5 missing  (1.0%)
+  account_status        2 missing  (0.4%)
+  created_date          2 missing  (0.4%)
+
+2. DATA TYPES (does the stored type match what's expected?)
+------------------------------------------------------------
+  customer_id      expected=integer                actual_dtype=float64    [OK]
+  first_name       expected=string                 actual_dtype=object     [OK]
+  last_name        expected=string                 actual_dtype=object     [OK]
+  email            expected=string (email format)  actual_dtype=object     [OK]
+  phone            expected=string (phone format)  actual_dtype=object     [OK]
+  date_of_birth    expected=date (YYYY-MM-DD)      actual_dtype=object     [MISMATCH]
+  address          expected=string                 actual_dtype=object     [OK]
+  income           expected=numeric                actual_dtype=float64    [OK]
+  account_status   expected=categorical            actual_dtype=object     [OK]
+  created_date     expected=date (YYYY-MM-DD)      actual_dtype=object     [MISMATCH]
+
+3. FORMAT ISSUES (values that parse but aren't in the standard format)
+------------------------------------------------------------
+  Phone numbers not in XXX-XXX-XXXX format: 123
+    e.g. ['+1 624 996 8797', '255.318.6420', '2253483899', '+1 985 706 9952', '12345']
+  date_of_birth not in YYYY-MM-DD format: 4
+  created_date not in YYYY-MM-DD format: 7
+
+4. UNIQUENESS (customer_id)
+------------------------------------------------------------
+  Total rows: 500
+  Unique customer_id values: 485
+  Rows sharing a duplicated customer_id: 20
+    e.g. IDs [44.0, 50.0, 141.0, 145.0, 154.0, 175.0, 190.0, 273.0, 322.0, 326.0]
+
+5. INVALID VALUES
+------------------------------------------------------------
+  Negative income: 3
+  Income above $10,000,000: 3
+  Literal 'invalid_date' in date_of_birth: 5
+  Literal 'invalid_date' in created_date: 0
+  Implied age over 150 years: 4
+  Implied negative age (birth date in the future): 5
+  Non-positive customer_id: 0
+
+6. CATEGORICAL VALIDITY (account_status)
+------------------------------------------------------------
+  Value counts: {'suspended': 165, 'active': 165, 'inactive': 162, 'Active': 2, 'ACTIVE': 2, 'pending': 2, 'nan': 2}
+  Rows with an invalid status (not active/inactive/suspended): 8
+    Invalid values seen: {'Active': 2, 'ACTIVE': 2, 'pending': 2, 'nan': 2}

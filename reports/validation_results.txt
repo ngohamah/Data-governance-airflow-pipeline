@@ -1,0 +1,49 @@
+VALIDATION RESULTS (raw data)
+============================================================
+Total rows validated: 500
+Rows with at least one failed rule: 110 (22.0%)
+
+FAILURES BY COLUMN AND RULE
+------------------------------------------------------------
+  account_status.required: 1 row(s) failed
+      example row indices: [252]
+  account_status.valid_status: 7 row(s) failed
+      example row indices: [475, 437, 341, 210, 168]
+  address.required: 3 row(s) failed
+      example row indices: [446, 251, 122]
+  address.valid_length: 12 row(s) failed
+      example row indices: [274, 266, 245, 223, 87]
+  created_date.required: 2 row(s) failed
+      example row indices: [427, 295]
+  created_date.valid_date_format: 7 row(s) failed
+      example row indices: [432, 428, 271, 265, 77]
+  customer_id.required: 5 row(s) failed
+      example row indices: [55, 59, 192, 160, 113]
+  customer_id.unique: 20 row(s) failed
+      example row indices: [495, 429, 425, 412, 378]
+  date_of_birth.plausible_age: 18 row(s) failed
+      example row indices: [448, 496, 485, 353, 326]
+  date_of_birth.required: 5 row(s) failed
+      example row indices: [492, 439, 372, 307, 303]
+  date_of_birth.valid_date_format: 9 row(s) failed
+      example row indices: [496, 485, 353, 308, 299]
+  email.required: 4 row(s) failed
+      example row indices: [363, 346, 292, 190]
+  email.valid_email: 3 row(s) failed
+      example row indices: [371, 309, 287]
+  first_name.required: 3 row(s) failed
+      example row indices: [358, 246, 212]
+  first_name.valid_name: 2 row(s) failed
+      example row indices: [121, 188]
+  income.in_range: 6 row(s) failed
+      example row indices: [450, 422, 373, 253, 237]
+  income.required: 5 row(s) failed
+      example row indices: [435, 362, 316, 138, 100]
+  last_name.required: 3 row(s) failed
+      example row indices: [63, 112, 136]
+  last_name.valid_name: 4 row(s) failed
+      example row indices: [239, 201, 118, 27]
+  phone.required: 1 row(s) failed
+      example row indices: [28]
+  phone.valid_phone: 4 row(s) failed
+      example row indices: [392, 224, 134, 17]

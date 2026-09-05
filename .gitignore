@@ -25,9 +25,11 @@ airflow.cfg
 airflow-webserver.pid
 standalone_admin_password.txt
 
-# Reports (generated at runtime, not hand-authored)
-reports/*
-!reports/.gitkeep
+# Report deliverables (*.txt) ARE tracked — they're listed as brief
+# deliverables. Only the supplementary plots (not a listed deliverable,
+# purely regenerable) stay ignored.
+reports/plots/*
+!reports/plots/.gitkeep
 
 # Editors / OS
 .DS_Store

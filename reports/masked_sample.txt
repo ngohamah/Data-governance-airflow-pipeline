@@ -1,0 +1,83 @@
+MASKED SAMPLE (before / after)
+============================================================
+Showing 10 of 495 rows across the masked columns: first_name, last_name, email, phone, date_of_birth, address
+
+Row 0 (customer_id=107)
+    first_name     BEFORE: 'Mark'                                   AFTER: 'M***'
+    last_name      BEFORE: 'Shah'                                   AFTER: 'S***'
+    email          BEFORE: 'mark.shah@yahoo.com'                    AFTER: 'm***@yahoo.com'
+    phone          BEFORE: '696-309-2198'                           AFTER: '***-***-2198'
+    date_of_birth  BEFORE: '1945-12-24'                             AFTER: '1945-**-**'
+    address        BEFORE: 'PSC 8059, Box 4980, APO AP 50114'       AFTER: '[MASKED ADDRESS]'
+
+Row 1 (customer_id=47)
+    first_name     BEFORE: 'Gregory'                                AFTER: 'G***'
+    last_name      BEFORE: 'Pierce'                                 AFTER: 'P***'
+    email          BEFORE: 'gregory.pierce@gmail.com'               AFTER: 'g***@gmail.com'
+    phone          BEFORE: '220-332-9682'                           AFTER: '***-***-9682'
+    date_of_birth  BEFORE: '1945-10-19'                             AFTER: '1945-**-**'
+    address        BEFORE: 'Unit 7695 Box 8519, DPO AE 85735'       AFTER: '[MASKED ADDRESS]'
+
+Row 2 (customer_id=141)
+    first_name     BEFORE: 'Michelle'                               AFTER: 'M***'
+    last_name      BEFORE: 'Park'                                   AFTER: 'P***'
+    email          BEFORE: 'michelle.park@yahoo.com'                AFTER: 'm***@yahoo.com'
+    phone          BEFORE: '715-395-2475'                           AFTER: '***-***-2475'
+    date_of_birth  BEFORE: '2003-03-18'                             AFTER: '2003-**-**'
+    address        BEFORE: '131 Herrera Roads Suite 104, West Cindy, ND 67807' AFTER: '[MASKED ADDRESS]'
+
+Row 3 (customer_id=465)
+    first_name     BEFORE: 'Rachel'                                 AFTER: 'R***'
+    last_name      BEFORE: 'White'                                  AFTER: 'W***'
+    email          BEFORE: 'rachel.white@yahoo.com'                 AFTER: 'r***@yahoo.com'
+    phone          BEFORE: '699-914-7622'                           AFTER: '***-***-7622'
+    date_of_birth  BEFORE: '1949-02-26'                             AFTER: '1949-**-**'
+    address        BEFORE: '8490 Amy Extensions, New Noahstad, TN 12381' AFTER: '[MASKED ADDRESS]'
+
+Row 4 (customer_id=325)
+    first_name     BEFORE: 'Christopher'                            AFTER: 'C***'
+    last_name      BEFORE: 'Robinson'                               AFTER: 'R***'
+    email          BEFORE: 'christopher.robinson@gmail.com'         AFTER: 'c***@gmail.com'
+    phone          BEFORE: '643-676-1857'                           AFTER: '***-***-1857'
+    date_of_birth  BEFORE: '1945-01-11'                             AFTER: '1945-**-**'
+    address        BEFORE: '5308 Lewis Islands Suite 280, Dorseytown, IN 26211' AFTER: '[MASKED ADDRESS]'
+
+Row 5 (customer_id=370)
+    first_name     BEFORE: 'Alexa'                                  AFTER: 'A***'
+    last_name      BEFORE: 'Jones'                                  AFTER: 'J***'
+    email          BEFORE: 'alexa.jones@hotmail.com'                AFTER: 'a***@hotmail.com'
+    phone          BEFORE: '900-303-9391'                           AFTER: '***-***-9391'
+    date_of_birth  BEFORE: '1975-11-27'                             AFTER: '1975-**-**'
+    address        BEFORE: '176 Mark Junction, West Lisashire, DC 39810' AFTER: '[MASKED ADDRESS]'
+
+Row 6 (customer_id=97)
+    first_name     BEFORE: 'Zachary'                                AFTER: 'Z***'
+    last_name      BEFORE: 'Floyd'                                  AFTER: 'F***'
+    email          BEFORE: 'zachary.floyd@gmail.com'                AFTER: 'z***@gmail.com'
+    phone          BEFORE: '598-541-9970'                           AFTER: '***-***-9970'
+    date_of_birth  BEFORE: '1965-06-07'                             AFTER: '1965-**-**'
+    address        BEFORE: '07016 Vanessa Pike, Larryfort, NC 19301' AFTER: '[MASKED ADDRESS]'
+
+Row 7 (customer_id=226)
+    first_name     BEFORE: 'Richard'                                AFTER: 'R***'
+    last_name      BEFORE: 'Lara'                                   AFTER: 'L***'
+    email          BEFORE: 'richard.lara@gmail.com'                 AFTER: 'r***@gmail.com'
+    phone          BEFORE: '315-269-3083'                           AFTER: '***-***-3083'
+    date_of_birth  BEFORE: '1943-11-02'                             AFTER: '1943-**-**'
+    address        BEFORE: '2569 Renee Court Suite 507, Scottville, MS 20150' AFTER: '[MASKED ADDRESS]'
+
+Row 8 (customer_id=127)
+    first_name     BEFORE: 'Lisa'                                   AFTER: 'L***'
+    last_name      BEFORE: 'Page'                                   AFTER: 'P***'
+    email          BEFORE: 'lisa.page@hotmail.com'                  AFTER: 'l***@hotmail.com'
+    phone          BEFORE: '624-996-8797'                           AFTER: '***-***-8797'
+    date_of_birth  BEFORE: '1993-11-19'                             AFTER: '1993-**-**'
+    address        BEFORE: '730 Ashley Plain, Alimouth, NH 30155'   AFTER: '[MASKED ADDRESS]'
+
+Row 9 (customer_id=206)
+    first_name     BEFORE: 'Jacob'                                  AFTER: 'J***'
+    last_name      BEFORE: 'Henderson'                              AFTER: 'H***'
+    email          BEFORE: 'jacob.henderson@gmail.com'              AFTER: 'j***@gmail.com'
+    phone          BEFORE: '493-832-1714'                           AFTER: '***-***-1714'
+    date_of_birth  BEFORE: '1996-12-22'                             AFTER: '1996-**-**'
+    address        BEFORE: '200 Chelsea Orchard, West Kevinhaven, MN 07641' AFTER: '[MASKED ADDRESS]'

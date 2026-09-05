@@ -1,0 +1,48 @@
+CLEANING LOG
+============================================================
+
+1. NORMALIZATION (values reformatted, not changed in meaning)
+------------------------------------------------------------
+  phone            119 value(s) reformatted
+  date_of_birth    4 value(s) reformatted
+  created_date     7 value(s) reformatted
+  first_name       0 value(s) reformatted
+  last_name        3 value(s) reformatted
+
+2. MISSING VALUE STRATEGY
+------------------------------------------------------------
+  Rows dropped (required field missing): 5
+      customer_id: 5 row(s) dropped
+  Placeholder values filled in:
+      first_name: 3 row(s) filled
+      last_name: 3 row(s) filled
+      account_status: 1 row(s) filled
+  Flagged for manual review (left blank, not fabricated):
+      email: 4 row(s) flagged
+      phone: 1 row(s) flagged
+      date_of_birth: 5 row(s) flagged
+      address: 3 row(s) flagged
+      income: 5 row(s) flagged
+      created_date: 2 row(s) flagged
+
+3. POST-CLEANING VALIDATION (confirms whether fixes worked)
+------------------------------------------------------------
+  Before cleaning: 110/500 rows failed validation (22.0%)
+  After cleaning:  88/495 rows failed validation (17.78%)
+  Remaining failures (not fixable by reformatting alone):
+      account_status.valid_status: 8 row(s)
+      address.required: 3 row(s)
+      address.valid_length: 12 row(s)
+      created_date.required: 2 row(s)
+      customer_id.unique: 20 row(s)
+      date_of_birth.plausible_age: 14 row(s)
+      date_of_birth.required: 5 row(s)
+      date_of_birth.valid_date_format: 5 row(s)
+      email.required: 4 row(s)
+      email.valid_email: 3 row(s)
+      first_name.valid_name: 2 row(s)
+      income.in_range: 6 row(s)
+      income.required: 5 row(s)
+      last_name.valid_name: 4 row(s)
+      phone.required: 1 row(s)
+      phone.valid_phone: 4 row(s)
