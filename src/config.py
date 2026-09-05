@@ -126,6 +126,13 @@ FULL_PROFILE_COLUMNS = [
 # --- Masking rules (Part 5) ---------------------------------------------------
 
 MASKED_ADDRESS_PLACEHOLDER = "[MASKED ADDRESS]"
+MASKED_DOB_PLACEHOLDER = "****-**-**"
+MASKED_GENERIC_PLACEHOLDER = "***"
+
+# Columns masked before sharing. Deliberately matches the brief's Part 5 examples
+# (name/email/phone/address/DOB) — income is flagged as PII in Part 2 but is NOT
+# masked here, a scope gap worth naming explicitly in the reflection (Part 7).
+MASKED_COLUMNS = ["first_name", "last_name", "email", "phone", "date_of_birth", "address"]
 
 # --- Missing-value strategy (Part 4) ------------------------------------------
 
