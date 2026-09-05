@@ -186,6 +186,29 @@ generate_or_sense_raw_data
   they own generating `customers_raw.csv`); the DAG's first task **senses** the file
   rather than generating it, so Airflow failure/retry semantics apply if it's missing.
 
+### Retry + failure-alert policy (user-requested)
+
+Applied via `default_args` on the DAG, so every task inherits it:
+
+```python
+default_args = {
+    "retries": 3,
+    "retry_delay": timedelta(minutes=5),
+    "email_on_retry": False,
+    "email_on_failure": True,
+    "email": [os.environ["ADMIN_EMAIL"]],
+}
+```
+
+- On task failure: retry up to 3 times, 5 minutes apart.
+- If all 3 retries are exhausted: Airflow emails `ADMIN_EMAIL` via its SMTP backend.
+- `ADMIN_EMAIL` and SMTP credentials (`AIRFLOW__SMTP__SMTP_HOST/PORT/USER/PASSWORD/MAIL_FROM`)
+  are read from `.env` (gitignored, real values filled in locally) — `.env.example` ships
+  placeholders only, nothing sent anywhere without the user's own SMTP config.
+- Note: this project has no external API calls (data is local/synthetic), so "API failure"
+  becomes "any task failure" — the same retry/alert mechanics, applied pipeline-wide rather
+  than to one API call specifically.
+
 ---
 
 ## 6. Open items / assumptions to confirm
@@ -199,6 +222,10 @@ generate_or_sense_raw_data
    `LocalExecutor` unless you want Celery). Will confirm image version in `Dockerfile`.
 4. Report files (`.txt`) will be written by the pipeline at runtime into `reports/`, not
    hand-written — they're generated artifacts.
+5. **Admin failure-alert email** — `ADMIN_EMAIL` and SMTP credentials ship as placeholders
+   in `.env.example`; you'll fill in real values in your local `.env` (gitignored) before
+   the DAG can actually send mail. Without it, tasks still retry 3x/5min but the final
+   failure email will just fail to send (logged, not fatal to the DAG run).
 
 ---
 
