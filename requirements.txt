@@ -2,7 +2,7 @@
 # container via Dockerfile so dags/ can import src/).
 # Airflow itself is NOT listed here — it comes from the apache/airflow base image.
 
-pandas==2.2.3
+pandas==2.1.4  # pinned to match apache-airflow-providers-google/snowflake's pandas<2.2 constraint
 pandera==0.20.4
 Faker==30.8.2
 python-dotenv==1.0.1
