@@ -1,26 +1,26 @@
 PIPELINE EXECUTION REPORT
 ============================================================
 Overall status: SUCCESS
-Total duration: 0.241s
+Total duration: 0.8s
 
-[SUCCESS] sense_raw_data  (0.002s)
+[SUCCESS] sense_raw_data  (0.545s)
     row_count: 500
 
-[SUCCESS] profile_quality  (0.096s)
+[SUCCESS] profile_quality  (0.095s)
     row_count: 500
     duplicate_id_rows: 20
     invalid_account_status_rows: 8
 
-[SUCCESS] detect_pii  (0.004s)
+[SUCCESS] detect_pii  (0.005s)
     full_identity_profile_rows: 481
 
-[SUCCESS] validate_raw  (0.05s)
+[SUCCESS] validate_raw  (0.047s)
     invalid_row_count: 110
     row_count: 500
 
-[SUCCESS] clean_and_revalidate  (0.084s)
+[SUCCESS] clean_and_revalidate  (0.102s)
     rows_out: 495
     post_clean_invalid_row_count: 88
 
-[SUCCESS] mask_pii  (0.005s)
+[SUCCESS] mask_pii  (0.006s)
     rows_masked: 495

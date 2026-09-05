@@ -99,10 +99,16 @@ docker compose up -d airflow-webserver airflow-scheduler
 ```
 
 Airflow UI at http://localhost:8080 (user: `airflow`, password: `airflow`).
-The DAG `pii_detection_pipeline` runs `sense_raw_data` (fails clearly if
-`customers_raw.csv` isn't there yet) then `run_full_pipeline` (calls
-`src.pipeline.run_pipeline()` unchanged). Every task retries 3 times, 5
-minutes apart, then emails `ADMIN_EMAIL` on final failure.
+The DAG `pii_detection_pipeline` runs one task per pipeline stage — each
+calling its `src` module directly (`profile_quality`, `detect_pii`,
+`validate_raw`, `clean_and_revalidate`, `mask_pii`) — so every stage gets its
+own retry, log stream, and status in the Airflow UI, fanning out in parallel
+where stages don't depend on each other. `sense_raw_data` fails clearly if
+`customers_raw.csv` isn't there yet; `write_pipeline_summary` writes
+`pipeline_execution_report.txt` once everything else succeeds. Every task
+retries 3 times, 5 minutes apart, then emails `ADMIN_EMAIL` on final failure.
+`python -m src.pipeline` remains the standalone, Airflow-free way to run the
+whole thing as one script.
 
 Tear down with `docker compose down`.
 
