@@ -25,11 +25,9 @@ airflow.cfg
 airflow-webserver.pid
 standalone_admin_password.txt
 
-# Report deliverables (*.txt) ARE tracked — they're listed as brief
-# deliverables. Only the supplementary plots (not a listed deliverable,
-# purely regenerable) stay ignored.
-reports/plots/*
-!reports/plots/.gitkeep
+# Report deliverables (*.txt) and the labeled quality-report plots are
+# tracked — both are referenced from README.md and shouldn't require a local
+# pipeline run to view.
 
 # Editors / OS
 .DS_Store
