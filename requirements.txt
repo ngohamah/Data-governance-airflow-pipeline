@@ -1,0 +1,13 @@
+# Local dev + pipeline logic dependencies (also installed inside the Airflow
+# container via Dockerfile so dags/ can import src/).
+# Airflow itself is NOT listed here — it comes from the apache/airflow base image.
+
+pandas==2.2.3
+pandera==0.20.4
+Faker==30.8.2
+python-dotenv==1.0.1
+matplotlib==3.9.2
+
+# Dev / lint / test tooling
+ruff==0.7.4
+pytest==8.3.3
