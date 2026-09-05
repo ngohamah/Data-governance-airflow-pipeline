@@ -1,7 +1,6 @@
 # PII Detection & Data Quality Validation Pipeline
 
-<!-- TODO: replace <owner>/<repo> once this repo has a GitHub remote -->
-![CI](https://github.com/<owner>/<repo>/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/ngohamah/Data-governance-airflow-pipeline/actions/workflows/ci.yml/badge.svg)
 
 A data engineering mini-project: profile a messy synthetic customer dataset,
 detect PII, validate data quality against a defined rule set, clean and mask
@@ -123,4 +122,4 @@ ruff format src/ tests/ dags/
 ## CI
 
 GitHub Actions (`.github/workflows/ci.yml`) runs `ruff check`, `ruff format
---check`, and `pytest` on every push/PR to `main`.
+--check`, and `pytest` on every push/PR to `master`.
