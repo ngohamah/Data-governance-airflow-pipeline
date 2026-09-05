@@ -65,6 +65,9 @@ EXPECTED_COLUMN_TYPES = {
 
 DATE_COLUMNS = ("date_of_birth", "created_date")
 
+# Non-ISO date formats the generator injects and the cleaner attempts to parse.
+ALTERNATE_DATE_FORMATS = ("%m/%d/%Y", "%d-%b-%Y", "%d/%m/%Y")
+
 DATE_FORMAT = "%Y-%m-%d"
 
 NAME_MIN_LEN = 2

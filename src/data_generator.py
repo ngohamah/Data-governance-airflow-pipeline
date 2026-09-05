@@ -24,7 +24,7 @@ from typing import Any
 import pandas as pd
 from faker import Faker
 
-from src.config import EXPECTED_COLUMNS, RAW_CSV_PATH
+from src.config import ALTERNATE_DATE_FORMATS, EXPECTED_COLUMNS, RAW_CSV_PATH
 from src.logging_config import get_logger
 
 logger = get_logger(__name__)
@@ -44,7 +44,6 @@ INVALID_EMAIL_SAMPLES = (
 )
 INVALID_PHONE_SAMPLES = ("12345", "phone-number", "000-00-0000", "abcdefghij")
 INVALID_ACCOUNT_STATUS_SAMPLES = ("Active", "ACTIVE", "pending", "closed", "N/A", "")
-NON_ISO_DATE_FORMATS = ("%m/%d/%Y", "%d-%b-%Y", "%d/%m/%Y")
 
 
 # --- Clean row generation ------------------------------------------------------
@@ -143,7 +142,7 @@ def fault_age_negative(row: Row, faker: Faker, rng: random.Random) -> Row:
 def fault_non_iso_date_format(column: str) -> FaultFn:
     def _apply(row: Row, faker: Faker, rng: random.Random) -> Row:
         parsed = datetime.strptime(row[column], "%Y-%m-%d")
-        return _with(row, **{column: parsed.strftime(rng.choice(NON_ISO_DATE_FORMATS))})
+        return _with(row, **{column: parsed.strftime(rng.choice(ALTERNATE_DATE_FORMATS))})
 
     return _apply
 
