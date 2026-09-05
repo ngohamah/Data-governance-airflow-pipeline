@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+
+# Environment
+.env
+
+# Data (regenerable via src/data_generator.py --seed)
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# Logs
+logs/*
+!logs/.gitkeep
+
+# Airflow
+plugins/*
+!plugins/.gitkeep
+airflow.cfg
+airflow-webserver.pid
+standalone_admin_password.txt
+
+# Reports (generated at runtime, not hand-authored)
+reports/*
+!reports/.gitkeep
+
+# Editors / OS
+.DS_Store
+.vscode/
+.idea/
