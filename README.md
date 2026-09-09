@@ -110,6 +110,8 @@ retries 3 times, 5 minutes apart, then emails `ADMIN_EMAIL` on final failure.
 `python -m src.pipeline` remains the standalone, Airflow-free way to run the
 whole thing as one script.
 
+![Airflow graph view of the pii_detection_pipeline DAG, showing sense_raw_data fanning out into profile_quality, detect_pii, validate_raw, and clean_and_revalidate in parallel, clean_and_revalidate feeding into mask_pii, and all stages feeding into write_pipeline_summary](reports/plots/airflow-pii-pipeline.png)
+
 Tear down with `docker compose down`.
 
 ## Tests
