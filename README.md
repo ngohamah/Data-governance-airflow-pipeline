@@ -4,10 +4,7 @@
 
 A data engineering mini-project: profile a messy synthetic customer dataset,
 detect PII, validate data quality against a defined rule set, clean and mask
-the data, and orchestrate the whole thing as an Airflow DAG. See
-[`PII-Detection&Data.md`](PII-Detection&Data.md) for the original brief and
-[`implementationmap.md`](implementationmap.md) for the design decisions behind
-this implementation (both gitignored locally, kept for reference).
+the data, and orchestrate the whole thing as an Airflow DAG. 
 
 ## Project layout
 
